@@ -1,0 +1,1108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071323">
+<title>Our Story | you & Me</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  --bg: #071323;
+  --bg2: #0d2035;
+  --gold: #d9bd83;
+  --white: #f5f0e8;
+  --muted: #a6afbd;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+button { font: inherit; }
+
+#stars {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.gold { color: var(--gold); }
+
+.serif {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.center {
+  text-align: center;
+}
+
+/* INTRO */
+
+
+/* INTRO - ENVELOPE OPENING */
+
+#intro {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background: radial-gradient(ellipse at center, #172c43, #080d18 80%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  text-align: center;
+  overflow: hidden;
+  transition: opacity .8s ease, visibility .8s ease;
+}
+
+#intro.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-date {
+  color: #d9bd83;
+  font-size: 12px;
+  letter-spacing: 4px;
+  margin-bottom: 55px;
+}
+
+.envelope-trigger {
+  background: transparent;
+  border: none;
+  padding: 20px;
+  cursor: pointer;
+  perspective: 1000px;
+}
+
+.envelope {
+  position: relative;
+  width: min(280px, 75vw);
+  height: 180px;
+  background: #c9b17e;
+  border-radius: 4px;
+  box-shadow: 0 20px 60px #0008;
+  transition: transform .8s ease;
+}
+
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  background: #c9b17e;
+}
+
+.envelope-letter {
+  position: absolute;
+  z-index: 2;
+  left: 8%;
+  bottom: 10px;
+  width: 84%;
+  height: 140px;
+  background: #f7f0df;
+  color: #253247;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  line-height: 1.4;
+  transition: transform 1s cubic-bezier(.2,.8,.2,1);
+}
+
+.envelope-front {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: #bda36d;
+  clip-path: polygon(0 0, 50% 58%, 100% 0, 100% 100%, 0 100%);
+}
+
+.envelope-flap {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  background: #dfc996;
+  clip-path: polygon(0 0, 100% 0, 50% 58%);
+  transform-origin: top;
+  transition: transform .8s ease;
+}
+
+.envelope-seal {
+  position: absolute;
+  z-index: 5;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #9d7440;
+  color: #f8e9c6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: serif;
+  font-size: 17px;
+  transition: opacity .3s ease, transform .3s ease;
+}
+
+#intro.opening .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+#intro.opening .envelope-letter {
+  transform: translateY(-115px);
+}
+
+#intro.opening .envelope-seal {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(.4);
+}
+
+#intro.opening .envelope {
+  transform: translateY(35px);
+}
+
+.intro-hint {
+  color: #d9bd83;
+  font-size: 10px;
+  letter-spacing: 3px;
+  margin-top: 45px;
+}
+
+
+/* MUSIC */
+
+.music-btn {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 5;
+  border: 1px solid #d9bd8355;
+  background: #0d2035dd;
+  color: var(--gold);
+  padding: 10px 14px;
+  border-radius: 25px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 5px;
+  margin-bottom: 30px;
+}
+
+.hero h1 {
+  font-size: clamp(65px, 15vw, 110px);
+  font-weight: 400;
+  line-height: .9;
+}
+
+.hero h2 {
+  font-size: clamp(25px, 7vw, 40px);
+  font-weight: 400;
+  color: var(--gold);
+  margin-top: 12px;
+}
+
+.hero p {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 30px;
+  line-height: 1.8;
+}
+
+.scroll {
+  margin-top: 75px;
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 3px;
+  animation: float 2s infinite;
+}
+
+@keyframes float {
+  50% { transform: translateY(8px); }
+}
+
+/* SECTIONS */
+
+section {
+  padding: 100px 22px;
+  max-width: 850px;
+  margin: auto;
+}
+
+.section-label {
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(40px, 9vw, 60px);
+  text-align: center;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+.description {
+  color: var(--muted);
+  line-height: 2;
+  font-size: 14px;
+  text-align: center;
+  max-width: 600px;
+  margin: auto;
+}
+
+/* TIMELINE */
+
+.timeline {
+  border-left: 1px solid #d9bd8366;
+  margin: 50px auto 0;
+  max-width: 540px;
+  padding-left: 25px;
+}
+
+.memory-point {
+  position: relative;
+  margin-bottom: 45px;
+}
+
+.memory-point::before {
+  content: "";
+  position: absolute;
+  left: -31px;
+  top: 5px;
+  height: 11px;
+  width: 11px;
+  background: var(--gold);
+  border-radius: 50%;
+  box-shadow: 0 0 15px #d9bd83;
+}
+
+.memory-point h3 {
+  color: var(--gold);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 25px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.memory-point p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* GALLERY */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 13px;
+  margin-top: 40px;
+}
+
+.photo {
+  aspect-ratio: 4/5;
+  background: linear-gradient(145deg, #18314a, #0d2035);
+  border: 1px solid #d9bd8333;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--gold);
+  font-size: 12px;
+  padding: 10px;
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.caption {
+  text-align: center;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+/* POLAROID MEMORY CARDS */
+
+.memory-card {
+  background: #f3ead8;
+  padding: 10px 10px 16px;
+  border-radius: 3px;
+  box-shadow: 0 8px 25px #0005;
+  transform: rotate(-1deg);
+  transition: transform .3s ease;
+}
+
+.memory-card:nth-child(2) {
+  transform: rotate(1.5deg);
+}
+
+.memory-card:nth-child(3) {
+  transform: rotate(-.5deg);
+}
+
+.memory-card:active {
+  transform: scale(1.03);
+}
+
+.memory-photo {
+  width: 100%;
+  aspect-ratio: 1 / 1.15;
+  overflow: hidden;
+  background: #d8cbb2;
+}
+
+.memory-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.memory-caption {
+  color: #283449;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  text-align: center;
+  padding-top: 13px;
+}
+
+/* HIDDEN NOTES */
+
+.notes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 35px;
+}
+
+.note {
+  background: #10243a;
+  border: 1px solid #d9bd8344;
+  padding: 22px 10px;
+  border-radius: 8px;
+  color: var(--gold);
+  cursor: pointer;
+  min-height: 90px;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.note span {
+  display: block;
+  margin-top: 8px;
+  color: var(--white);
+}
+
+/* LETTER */
+
+.letter {
+  border: 1px solid #d9bd8355;
+  padding: 30px 23px;
+  border-radius: 8px;
+  background: #0b1b2d;
+  margin-top: 35px;
+}
+
+.letter p {
+  color: #d7d6d2;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 21px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.signature {
+  color: var(--gold);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 27px;
+  font-style: italic;
+}
+
+/* ENDING */
+
+.ending {
+  padding: 110px 20px;
+  text-align: center;
+  background: radial-gradient(ellipse, #142941, #071323 70%);
+}
+
+.ending h2 {
+  font-size: clamp(45px, 11vw, 75px);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 2px;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity .9s ease, transform .9s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 400px) {
+  section { padding: 75px 18px; }
+  .gallery, .notes { gap: 9px; }
+}
+ /* FULL SCREEN PHOTO VIEWER */
+#photoViewer {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(5, 10, 20, 0.96);
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+}
+
+#photoViewer.active {
+  display: flex;
+}
+
+#fullPhoto {
+  display: block;
+  width: auto !important;
+  height: auto !important;
+  max-width: 85vw !important;
+  max-height: 70vh !important;
+  object-fit: contain !important;
+  margin: auto;
+}
+
+.photo-close {
+  position: absolute;
+  top: 20px;
+  right: 22px;
+  background: transparent;
+  border: none;
+  color: #d8bd83;
+  font-size: 38px;
+  cursor: pointer;
+  } /* ANNIVERSARY LETTER DESIGN */
+
+.letter {
+  background:
+    linear-gradient(rgba(243,234,216,0.96), rgba(243,234,216,0.96)),
+    repeating-linear-gradient(
+      45deg,
+      #d9c9a8 0px,
+      #d9c9a8 1px,
+      transparent 1px,
+      transparent 5px
+    );
+  color: #283449;
+  padding: 30px 24px;
+  margin: 30px 5px;
+  border: 1px solid #b99a62;
+  outline: 1px solid rgba(185,154,98,0.35);
+  outline-offset: 5px;
+  border-radius: 3px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+  position: relative;
+  transform: rotate(-0.5deg);
+}
+
+.letter p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  line-height: 1.9;
+  color: #283449;
+  margin-bottom: 25px;
+}
+
+.letter .section-label {
+  color: #a17b42;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: bold;
+  margin: 32px 0 15px;
+}
+
+.letter .signature {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 23px;
+  text-align: right;
+  color: #9a7540;
+  margin-top: 35px;
+  padding-bottom: 10px;
+}
+
+.letter {
+  animation: letterReveal 1s ease both;
+}
+
+@keyframes letterReveal {
+  from {
+    opacity: 0;
+    transform: translateY(25px) rotate(-0.5deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(-0.5deg);
+  }
+</style>
+</head>
+
+<body>
+
+<canvas id="stars"></canvas>
+
+<!-- ADD music.mp3 TO THE SAME FOLDER -->
+  <audio id="music" src="music.mp3" preload="auto"></audio>
+
+<button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+  ♫ Play music
+</button>
+
+<!-- OPENING SCREEN -->
+
+<div id="intro">
+
+  <div class="intro-date">
+    NOVEMBER 1, 2023
+  </div>
+
+  <button class="envelope-trigger"
+          onclick="openStory()"
+          aria-label="Open the anniversary letter">
+
+    <div class="envelope">
+
+      <div class="envelope-back"></div>
+
+      <div class="envelope-letter">
+        Three years later,
+        and there's still so much left to say.
+      </div>
+
+      <div class="envelope-front"></div>
+
+      <div class="envelope-flap"></div>
+
+      <div class="envelope-seal">N</div>
+
+    </div>
+
+  </button>
+
+  <div class="intro-hint">
+    TAP TO OPEN
+  </div>
+
+</div>
+
+
+<!-- MAIN HERO -->
+
+<div class="hero">
+  <div class="eyebrow">01 NOVEMBER 2023 — 2026</div>
+  <h1 class="serif">Our Story</h1>
+  <h2 class="serif">you & Me</h2>
+  <p>Three years. Countless memories.<br>And a story still being written.</p>
+  <div class="scroll">SCROLL TO EXPLORE ↓</div>
+</div>
+
+<!-- BEGINNING -->
+
+<section class="reveal">
+  <div class="section-label">CHAPTER ONE</div>
+  <h2 class="section-title">Where it all began.</h2>
+  <p class="description">
+    November 1, 2023.<br><br>
+    One date that became the beginning of something
+    that means more to me than words can explain.
+    This is where our story started.
+  </p>
+</section>
+
+<!-- TIMELINE -->
+
+<section class="reveal">
+  <div class="section-label">OUR JOURNEY</div>
+  <h2 class="section-title">Three years of us.</h2>
+
+  
+<div class="timeline">
+
+  <div class="memory-point">
+    <h3>01.11.2023 — Where it began</h3>
+    <p>
+      Two years of waiting, an unexpected reunion,
+      and one day that changed everything.
+      Maybe some things really are written by destiny.
+    </p>
+  </div>
+
+  <div class="memory-point">
+    <h3>The proposal — The beginning of us</h3>
+    <p>
+      Two days of nervous excitement, finally gathering
+      the courage, and probably the worst proposal ever.
+      But somehow, you said yes.
+    </p>
+  </div>
+
+  <div class="memory-point">
+    <h3>The golden hours — Our little world</h3>
+    <p>
+      Tuition days, those three-day calls, silly
+      conversations and all the little moments
+      that became my favourite memories.
+    </p>
+  </div>
+
+  <div class="memory-point">
+    <h3>01.11.2026 — Three years of us</h3>
+    <p>
+      Three years later, we're still writing this story.
+      And honestly, I want so many more chapters with you.
+    </p>
+  </div>
+
+</div>
+
+</section>
+
+<!-- GALLERY -->
+
+<section class="reveal">
+  <div class="section-label">OUR LITTLE UNIVERSE</div>
+  <h2 class="section-title">Captured moments.</h2>
+  <p class="description">
+    Some memories deserve to stay forever.
+  </p>
+
+  
+<div class="gallery">
+
+  <div class="memory-card">
+    <div class="memory-photo">
+      <img src="photo1.jpg" alt="Our memory 1" onclick="openPhoto(this.src)">
+    </div>
+    <div class="memory-caption">
+      our first pic
+    </div>
+  </div>
+
+  <div class="memory-card">
+    <div class="memory-photo">
+<img src="photo2.jpg" alt="Our memory 2" onclick="openPhoto(this.src)">
+
+    </div>
+    <div class="memory-caption">
+      One of my favourite days.
+    </div>
+  </div>
+
+  <div class="memory-card">
+    <div class="memory-photo">
+<img src="photo3.jpg" alt="Our memory 3" onclick="openPhoto(this.src)">
+    </div>
+    <div class="memory-caption">
+      Every little moment , a memmory
+    </div>
+  </div>
+
+</div>
+
+</section>
+
+<!-- INTERACTIVE NOTES -->
+
+<section class="reveal">
+  <div class="section-label">A FEW LITTLE SECRETS</div>
+  <h2 class="section-title">Tap to discover.</h2>
+  <p class="description">
+    Four little things I want you to know.
+  </p>
+
+  <div class="notes">
+    <button class="note" onclick="revealNote(this, 'You make ordinary days feel special. ♡')">
+      A little secret 01
+    </button>
+    <button class="note" onclick="revealNote(this, 'Your smile is one of my favourite things.')">
+      A little secret 02
+    </button>
+    <button class="note" onclick="revealNote(this, 'Thank you for being part of my journey.')">
+      A little secret 03
+    </button>
+    <button class="note" onclick="revealNote(this, 'I hope we make a million more memories.')">
+      A little secret 04
+    </button>
+  </div>
+</section>
+
+<!-- LETTER -->
+
+<!-- OUR PERSONAL LETTER -->
+
+<section class="reveal">
+  <div class="section-label">FROM MY HEART</div>
+  <h2 class="section-title">A letter for you.</h2>
+
+  <div class="letter">
+
+    <p>Dear Achu,</p>
+
+    <div class="section-label">01 — THE DAY DESTINY SURPRISED US</div>
+
+    <p>
+    Achu today is a great day for us i think inn Nammade 3rd anniversary and I love you soo much. Day by day nee enne ang completely fell aakkuvaan you are the best thing that happened in my life.
+    </p>
+
+    <p>
+    I don't know but some how im so much addicted to you നമ്മുടെ aa first meet I though I almost lost you. Ente aa 2yrs ninne orth nadanna ellam waste aayenna aan njn karthiye but in an unexpected moment nml kandu
+    </p>
+
+    <p>
+    Aa day enikk ondaaya happiness ath enthaan enikk ninnod prnj tharaan polum pattulla ente lifile thanne one of the best moment aarnn ath Sathyam prnja namll ee etra sremichaalum kittulla enn orppich ee move on aavaan sremikkna time il nmk ath achieve cheyyan pattulla angane nee. Ente ella hopeum poy ninne thanne miss aayinn orppich aarnnu njn irnne.
+    </p>
+
+    <p>
+    Ninne propose cheyyan enikk etra avasaragal kitty athonnum njn upayogichilla enna olle or regretum koodi adich njn completely blank aayi poykkondirnna time aarnn ath. Appazhaan unexpected aayitt ith vare njn keraandann vech irnondirnna vandi. annathe day kittullaahn orppiche aa bus ann ente frntil kond nirthiye and rest is....
+    </p>
+
+    <p>
+    Yeah may be it's god's plan to kaaryangal Ingane nadakkattenn pulli karthi kaanum ann thott pinne angott enganaayalum vridhavanil valinj keranam nn maatre ente mindil orndaannoll and finally enikk ninne propose cheyyan olle dairyom kitty..
+    </p>
+
+    <div class="section-label">02 — THE WORST PROPOSAL EVER 😂</div>
+
+    <p>
+    propose nte kaaryam pinne njn onnum pryanilla enikk ariya it's the worst proposal ever enikk arinjuda athanne njn engana nintedth prnjenn. Ann aa proposal kazhinj aa 2 day ondalla ath enganaa thalli neekiyenn enikke ariyuu njnane ang excitement cheriya tentionum ellam koodi ang pandaaradich aan irinnee..🤯.
+    </p>
+
+    <p>
+    Nee reject cheyyuva accept cheyyuvaa hoo orkkan vayya that days...🫩. And the day when you finally decided to have a life long head ache. I appreciate your decision any ways😌..pinne angott life onn upgrade aaya or feel aarnnee like kaaryangal share cheyyan oraal oode add aayillaa😹.
+    </p>
+
+    <div class="section-label">03 — HOW YOU BECAME MY MOTIVATION</div>
+
+    <p>
+    Ennod palarum prnjj koodi poyaa ithor 3 4 month kaanum ath kazhimba avl ninne ittech povum and enikk still or vishwasondaarmm that doesn't happen. Kaaryam enikk orpparnn ente decision orikkalum thettillahn.
+    </p>
+
+    <p>
+    Kaaryam ninkk ariyaalla enikk angane adhikam aarem vaayi nokki nadakkan istalla I'm a one girl type boy first aa 4 il vech avlde edthaan enikk or crush adiche and ath kazhinj pinne angott entho vere or girlsinod enikk angane or feel eeh vannittilla and then Ninte entry ath or onnonnara entry aarnn mole matte mahabarathathil engand ille athile aa rishyasringante thapas nashippikkane pole aarnn Ninte entry😂.
+    </p>
+
+    <p>
+    Enikk ippazhum ariyaathe orotta kaaryaan eppazhaan ninne enikk ishtapedaan thodangiyen...😹. Ninkk aan njn 10 il full Apls vaangiyente full creditsum kaaranam nee illangi aa tution clsil daily vannenod enikk or thatparyom illarnne you are my motivation enn😂.
+    </p>
+
+    <p>
+    Ninkk ariyaava njn ambalathil chenn prarthichittond "krishna avle enikk enganelum set aakki thanneenn "😹 njn enthina ninkk ithe pole or saanm ezthamenn polum enikk arinjuuda. Njn Ingane kuthi irnn story ezthane aall onnu alla pinne entho ullinn or thoraa😂.
+    </p>
+
+    <div class="section-label">04 — MY GOLDEN HOURS WITH YOU</div>
+
+    <p>
+    Enthaan arinjuuda enikk Ninte koode spend cheyynna time ondalla golden hours aann eppazhum orkkum time onn payye poyengiln ninnakkariyaava nml brlntil padicha aa timel ninne etra miss aakkinn hoo aa azchele 3 day vilikkal aarnn enikk aage olle or samaadhanam appazhum nee vilikkathe day ondekil ondalla ente mood motham povum pinne padikkanum thonnulla onnum thonnullaa
+    </p>
+
+    <p>
+    ann or day nee vilich karanjillaarnna annenikk Enth veshamaarnn satyam prnja Ninte adth vann samaadhinippilkanonn ondaarnn pinne korch kazhinj athorthappa enikk korch or happiness um kitty kaaryam nee athrakk open aayitt ahn ann entedth samsaariche appa enikk or feel kittyy nee Ninte ullilolle express cheythile athippa engana nintedth parnj mansilaakkanenn ariyulla enikk enthaayalum ninkk ente lifel olla importance enthaan ninkk ippazhum ariyulla
+    </p>
+
+    <p>
+    njn palappozhum orkkum njn itrakk neeyum aayitt attached aayitt irnn kazhinja or kaalath nee change aayi nmkk ithekke ivde nirthaan prnjaa Enth cheyyunn and ath orth njn nintedth gap idaan nokkiyaalum enikk arinjuuda enne kond ath orkkilum cheyyan pattullatha pole aann.
+    </p>
+
+    <p>
+    Brilliantil aarnnappa njn daily kedakkanen mumb Ninte photo edth vech Ingane nokki kond irikkum night appa enthaann ariyulla Ingane heart ekke ang fill aavunna or feel aann🙂.
+    </p>
+
+    <p>
+    Enikk aane onnamath aayi girlsinod velya mindi exp illathond ee love ekke engana express cheyyanemn polum ariyullaarnn😹.Ippa enthaayalum korchekke maari vannondunn thonnan 😁. Hooi ithekke korch cringe aann thonnan nmde type vech nmkk randaalkkum cringe velya thatparyaillathe aann pinne nalla memmorieesss venongi korchekke cringes aavam enn thonnan😂.
+    </p>
+
+    <div class="section-label">05 — THREE YEARS ALREADY?</div>
+
+    <p>
+    And then ini enthaa parayanden ente mindil vannillaa you are out of my words enikk Ippa thanne 3 yrs aayi enikk aane athott viswasikkanum pattnillaa.
+    </p>
+
+    <div class="section-label">06 — OUR FUTURE TOGETHER ❤️</div>
+
+    <p>
+    Enthaayalum inim kore ond koode ondaavanam nml edell Enth problem vannalum ath communicate cheyth theerkkanam allathe ellarum cheyyane pole communicate cheyyandi avsaanm or problem varumba amitt pottane pole aavand nmkk ponam ente oreor aim is to drive it to the marriage and life long Ninte oppolla timum that's all I want namkk lifel Enth problems vannalum parasparam orale support cheyth happy aayitt olle or life that's all...
+    </p>
+
+    <p>
+    And finally Happy anniversary dear ❤️😘
+    </p>
+
+    <div class="signature">Yours, always. ♡</div>
+
+  </div>
+</section>
+
+
+<!-- ENDING -->
+
+<div class="ending reveal">
+  <div class="section-label">CHAPTER THREE</div>
+  <h2 class="serif">
+    This isn't<br>
+    the end of<br>
+    <span class="gold">our story.</span>
+  </h2>
+  <p class="description" style="margin-top:25px">
+    The best chapters are still unwritten.
+  </p>
+  <p class="gold serif" style="font-size:27px;margin-top:35px">
+    Happy Anniversary, Achu. ♡
+  </p>
+</div>
+
+<footer>
+  MADE WITH LOVE · 01.11.2026
+</footer>
+ 
+<script>
+/* OPEN STORY */
+
+function openStory() {
+  const intro = document.getElementById('intro');
+
+  if (intro.classList.contains('opening')) return;
+
+  intro.classList.add('opening');
+
+  const music = document.getElementById('music');
+
+  music.volume = 0;
+
+  music.play()
+    .then(() => {
+      updateMusicButton(true);
+
+      let volume = 0;
+      const targetVolume = 0.35;
+      const duration = 10000;
+      const interval = 200;
+      const increase = targetVolume / (duration / interval);
+
+      const fade = setInterval(() => {
+        volume += increase;
+
+        if (volume >= targetVolume) {
+          volume = targetVolume;
+          clearInterval(fade);
+        }
+
+        music.volume = volume;
+      }, interval);
+    })
+    .catch(() => updateMusicButton(false));
+
+  setTimeout(() => {
+    intro.classList.add('hide');
+
+    setTimeout(() => {
+      intro.style.display = 'none';
+    }, 850);
+
+  }, 1800);
+}
+
+  
+
+/* MUSIC */
+
+const music = document.getElementById('music');
+
+function updateMusicButton(playing) {
+  document.getElementById('musicBtn').textContent =
+    playing ? '♫ Pause music' : '♫ Play music';
+}
+
+function toggleMusic() {
+  if (music.paused) {
+    music.play()
+      .then(() => updateMusicButton(true))
+      .catch(() => alert('Add music.mp3 to your project folder first.'));
+  } else {
+    music.pause();
+    updateMusicButton(false);
+  }
+}
+
+music.addEventListener('ended', () => updateMusicButton(false));
+music.addEventListener('pause', () => updateMusicButton(false));
+music.addEventListener('play', () => updateMusicButton(true));
+
+/* SECRET NOTES */
+
+function revealNote(button, message) {
+  if (button.dataset.opened) return;
+  button.dataset.opened = 'yes';
+  button.innerHTML = '♡<span>' + message + '</span>';
+}
+
+/* SCROLL REVEAL */
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => {
+  observer.observe(el);
+});
+
+/* STAR ANIMATION */
+
+const canvas = document.getElementById('stars');
+const ctx = canvas.getContext('2d');
+let stars = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  stars = [];
+
+  for (let i = 0; i < 90; i++) {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.5,
+      a: Math.random(),
+      speed: Math.random() * 0.015 + 0.003
+    });
+  }
+}
+
+function animateStars() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  stars.forEach(s => {
+    s.a += s.speed;
+    const opacity = 0.25 + Math.abs(Math.sin(s.a)) * 0.6;
+
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(217,189,131,${opacity})`;
+    ctx.fill();
+  });
+
+  requestAnimationFrame(animateStars);
+}
+
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+animateStars();function openPhoto(src) {
+  const viewer = document.getElementById('photoViewer');
+  const fullPhoto = document.getElementById('fullPhoto');
+
+  fullPhoto.src = src;
+  viewer.classList.add('active');
+}
+
+function closePhoto() {
+  document.getElementById('photoViewer').classList.remove('active');
+  }
+  function startBackgroundMusic() {
+  const music = document.getElementById('music');
+
+  music.volume = 0;
+  music.currentTime = 0;
+
+  music.play().then(() => {
+    let volume = 0;
+    const targetVolume = 0.35;
+    const duration = 20000;
+    const interval = 200;
+    const increase = targetVolume / (duration / interval);
+
+    const fade = setInterval(() => {
+      volume += increase;
+
+      if (volume >= targetVolume) {
+        volume = targetVolume;
+        clearInterval(fade);
+      }
+
+      music.volume = volume;
+    }, interval);
+
+  }).catch(error => {
+    console.log("Music playback could not start:", error);
+  });
+    
+  }
+
+
+
+
+</script><!-- FULL SCREEN PHOTO VIEWER -->
+<div id="photoViewer" onclick="closePhoto()">
+  <button class="photo-close" onclick="event.stopPropagation(); closePhoto()">×</button>
+  <img id="fullPhoto" src="" alt="Memory">
+</div>
+
+</body>
+</html>
